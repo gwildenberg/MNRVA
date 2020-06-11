@@ -50,11 +50,11 @@ def merge(start_node, end_node):
             try:
                 tup = (start_node[i], end_node[i])
             except IndexError:
-                if len(star_node) > len(end_node):
+                if len(start_node) > len(end_node):
                     end_node.append('')
                     tup = (start_node[i], end_node[i])
                 elif len(start_node) < len(end_node):
-                    edges.append('')
+                    start_node.append('')
                     tup = (start_node[i], end_node[i])
                 continue
 
@@ -85,15 +85,15 @@ def dict_value_replace(dict, key_vector, new_value):
 
     for key in dict.keys():
         if key == key_vector:
-            dict[ key ] = new_value
+            dict[key] = new_value
 
 def mergeDict(dict1, dict2):
     """Merges two dictionaries together so that the values are appended into a list"""
 
-    dict3 = {**dict1, **dict2}
+    dict3 = {dict1, dict2}
     for key, value in dict3.items():
         if key in dict1 and key in dict2:
-            dict3[ key ] = [ value, dict1[ key ] ]
+            dict3[key] = [value, dict1[key]]
 
     return dict3
 
@@ -112,8 +112,8 @@ def skeleton_comment(root):
     skeleton_comments = [ ]
     for thing in root.iter('thing'):
         try:
-            if thing.attrib[ 'comment' ]:
-                skeleton_comments.append(thing.attrib[ 'comment' ])
+            if thing.attrib['comment']:
+                skeleton_comments.append(thing.attrib['comment'])
         except(KeyError):
             skeleton_comments.append('.')
             continue
@@ -326,7 +326,7 @@ def skeleton_information(root):
 def node_horizontal_list(root):
     """Function to create a list of all the node information (id, radius, x, y, z, comment)"""
 
-    node_info = [ ]
+    node_info = []
     # Parsing through each of the nodes for the required information:
     for node in root.iter('node'):
         node_id_vect = node.attrib['id']
@@ -355,7 +355,7 @@ def XML_info_node_rows(root):
         # Creating a list of node information per skeleton:
         node_info = node_horizontal_list(thing)
         # Compiling all of the information into a single final list:
-        final_list = [ ]
+        final_list = []
         final_list.append(skeleton_ids)
         final_list.extend(skeleton_comments)
         final_list.extend(node_info)
