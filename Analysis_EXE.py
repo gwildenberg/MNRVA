@@ -14,29 +14,29 @@ import pandas as pd
 
 # Setting user input to select which analyses user wants run:
 
-parsing_option = input("Excel file with all object information? (Y or N): ")
+parsing_option = input("Excel sheet with complete skeleton information (Y or N): ")
 parsing_option.islower()
 if parsing_option is 'y':
     horizontal_orientation = input("Would you like node information to be separate columns as a horizontal output? WARNING: do not use with large data sets (Y or N): ")
     horizontal_orientation.islower()
-branch_class_option = input("Run Branch Classification (Apical vs. Basal) Analysis? (Y or N): ")
+branch_class_option = input("Branch Classification (Apical vs. Basal) Analysis (Y or N): ")
 branch_class_option.islower()
-branch_number_option = input("Run Branch Number per Skeleton Analysis? (Y or N): ")
+branch_number_option = input("Branch Number per Skeleton Analysis (Y or N): ")
 branch_number_option.islower()
-euclidean_distance_option = input("Calculate dendritic distance? (Y or N): ")
+euclidean_distance_option = input("Dendritic Distance Analysis (Y or N): ")
 euclidean_distance_option.islower()
 if euclidean_distance_option is 'y':
-    total_eu_option = input("Do you want the total euclidean distance per skeleton? (Y or N): ")
+    total_eu_option = input("Total Dendritic Distance per Neuron (Y or N): ")
     total_eu_option.islower()
-    node_eu_option = input("Do you want the euclidean distance per node? (Y or N): ")
+    node_eu_option = input("Distance per Node Pair (Y or N): ")
     node_eu_option.islower()
-visualization_option = input("Skeleton reference? (Y or N): ")
+visualization_option = input("Visual Neuron Reference? (Y or N): ")
 visualization_option.islower()
-swc_option = input("Convert XML to SWC file format? This will output a .csv file with the correct format for neuromorph files (Y or N): ")
+swc_option = input("Convert XML to SWC file format - this will output a .csv file with the correct format for neuromorph files (Y or N): ")
 swc_option.islower()
 
 if swc_option is 'y':
-    orientation_option = input("Which X,Y,Z plane is North? This will be used as orientation for determining apical vs basal branches (please input x,y, or z): ")
+    orientation_option = data_ori
 
 print("\n")
 
